@@ -6,4 +6,4 @@
 
 Ссылка на репозиторий в GitHub: https://github.com/AnnaGolmakova/guider-test
 
-Ссылка на GitHub Pages:
+Ссылка на GitHub Pages: https://annagolmakova.github.io/guider-test/
