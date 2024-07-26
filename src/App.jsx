@@ -12,18 +12,39 @@ import List from "./components/list/List";
 
 function App() {
   const [booksList, setBooksList] = useState([...data]);
+  const [sortedList, setSortedList] = useState([...data]);
   const [currentSortOption, setCurrentSortOption] = useState(null);
   const [currentSortDirection, setCurrentSortDirection] = useState("asc");
   const [tags, setTags] = useState(new Set([]));
   const [selectedTags, setSelectedTags] = useState(new Set([]));
 
   useEffect(() => {
-    data.map((entry) => entry.tags.map((tag) => setTags(tags.add(tag))));
-  }, [data, tags]);
+    setTags(
+      data.reduce((list, item) => {
+        return list.union(new Set(item.tags));
+      }, new Set([])),
+    );
+  }, []);
 
   useEffect(() => {
     sortList({ type: currentSortOption, direction: currentSortDirection });
-  }, [currentSortOption, currentSortDirection]);
+  }, [currentSortOption, currentSortDirection, booksList]);
+
+  useEffect(() => {
+    if (selectedTags.size === 0) {
+      setBooksList([...data]);
+    } else {
+      setBooksList(
+        data.filter((item) => {
+          return selectedTags.intersection(new Set(item.tags)).size > 0;
+        }),
+      );
+    }
+  }, [selectedTags]);
+
+  useEffect(() => {
+    console.log("Updated list", booksList);
+  }, [booksList]);
 
   function changeSortDirection(type) {
     if (currentSortOption == type) {
@@ -70,25 +91,17 @@ function App() {
 
   function sortList(options) {
     // prettier-ignore
-    if (options.type === "author") setBooksList(sortByAuthor(options.direction));
-    if (options.type === "price") setBooksList(sortByPrice(options.direction));
-    if (options.type === "date") setBooksList(sortByDate(options.direction));
+    if (options.type === "author") setSortedList(sortByAuthor(options.direction));
+    if (options.type === "price") setSortedList(sortByPrice(options.direction));
+    if (options.type === "date") setSortedList(sortByDate(options.direction));
+    if (options.type === null) setSortedList(booksList);
   }
 
-  function handleTagSelection(tag) {
+  async function handleTagSelection(tag) {
     if (!selectedTags.has(tag)) {
       setSelectedTags(new Set(selectedTags.add(tag)));
     } else {
       setSelectedTags(new Set([...selectedTags].filter((x) => x !== tag)));
-    }
-    if ([...selectedTags].length === 0) {
-      setBooksList([...data]);
-    } else {
-      setBooksList([
-        ...booksList.filter(
-          (item) => selectedTags.intersection(new Set(item.tags)).size != 0,
-        ),
-      ]);
     }
   }
 
@@ -109,7 +122,7 @@ function App() {
         tags={tags}
         selectedTags={selectedTags}
       />
-      <List items={booksList} />
+      <List items={sortedList} />
     </>
   );
 }

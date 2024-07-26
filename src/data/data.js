@@ -33,7 +33,7 @@ export const data = [
     title: "Superstorm, Design and Politics in the Age of Information",
     author: "Noemi Biasetton",
     date: "June 18, 2024",
-    price: 25,
+    price: 32,
     tags: ["History", "Art", "Design"],
   },
   {
@@ -41,7 +41,7 @@ export const data = [
     author: "Lous Martens",
     illustrator: "Zeno",
     date: "January 2023",
-    price: 25,
+    price: 27,
     tags: ["Art"],
   },
 ];
