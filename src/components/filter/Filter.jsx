@@ -1,18 +1,57 @@
 import "./Filter.css";
 import SortingButton from "./SortingButton";
+import { useState } from "react";
 
-function Filter() {
+function Filter({ sortingType, sortingDirection }) {
+  const [currentOption, setCurrentOption] = useState(null);
+  const [currentDirection, setCurrentDirection] = useState("asc");
+
+  function invertDirection() {
+    setCurrentDirection(currentDirection === "asc" ? "desc" : "asc");
+  }
+
+  function changeDirection(type) {
+    console.log(currentOption, currentDirection);
+    if (currentOption == type) {
+      invertDirection();
+    } else {
+      setCurrentOption(type);
+      setCurrentDirection("asc");
+    }
+  }
+
   return (
     <div className="filter">
       <ul className="sort-options">
         <li className="sort-option">
-          <SortingButton isActive label="price" />
+          <SortingButton
+            onClick={() => {
+              changeDirection("price");
+            }}
+            isActive={currentOption === "price"}
+            up={currentOption === "price" && currentDirection === "desc"}
+            label="price"
+          />
         </li>
         <li className="sort-option">
-          <SortingButton sortDirection="desc" label="author" />
+          <SortingButton
+            onClick={() => {
+              changeDirection("author");
+            }}
+            isActive={currentOption === "author"}
+            up={currentOption === "author" && currentDirection === "desc"}
+            label="author"
+          />
         </li>
         <li className="sort-option">
-          <SortingButton label="date" />
+          <SortingButton
+            onClick={() => {
+              changeDirection("date");
+            }}
+            isActive={currentOption === "date"}
+            up={currentOption === "date" && currentDirection === "desc"}
+            label="date"
+          />
         </li>
       </ul>
       <div className="tags">

@@ -1,4 +1,5 @@
 .sort-button {
+  width: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,16 +14,16 @@
 }
 
 .sort-button::after {
-  content: " ";
-  margin-left: 4px;
-  width: 18px;
-  height: 18px;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
   -webkit-mask-image: url(../../assets/move-down.svg);
   mask-image: url(../../assets/move-down.svg);
-  background-color: var(--text-primary);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
   transition: transform 0.3s;
+  margin-left: 4px;
+  background-color: var(--text-primary);
+  width: 18px;
+  height: 18px;
+  content: " ";
 }
 
 .sort-button_up::after {

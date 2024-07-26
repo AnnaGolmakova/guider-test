@@ -1,11 +1,11 @@
 import "./SortingButton.css";
 
-function SortingButton({ label, isActive, sortDirection, onClick }) {
+function SortingButton({ label, isActive, up, onClick }) {
   return (
     <button
       className={`sort-button
         ${isActive ? "sort-button_active" : ""}
-        ${sortDirection == "desc" ? "sort-button_up" : ""}
+        ${up ? "sort-button_up" : ""}
       `}
       onClick={onClick}
     >
