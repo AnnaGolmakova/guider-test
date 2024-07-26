@@ -81,10 +81,20 @@ function App() {
     } else {
       setSelectedTags(new Set([...selectedTags].filter((x) => x !== tag)));
     }
+    if ([...selectedTags].length === 0) {
+      setBooksList([...data]);
+    } else {
+      setBooksList([
+        ...booksList.filter(
+          (item) => selectedTags.intersection(new Set(item.tags)).size != 0,
+        ),
+      ]);
+    }
   }
 
   function resetFilter() {
     setSelectedTags(new Set());
+    setBooksList([...data]);
   }
 
   return (
