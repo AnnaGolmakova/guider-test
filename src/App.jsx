@@ -42,10 +42,6 @@ function App() {
     }
   }, [selectedTags]);
 
-  useEffect(() => {
-    console.log("Updated list", booksList);
-  }, [booksList]);
-
   function changeSortDirection(type) {
     if (currentSortOption == type) {
       setCurrentSortDirection(currentSortDirection === "asc" ? "desc" : "asc");
