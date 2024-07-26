@@ -1,55 +1,31 @@
 import "./Filter.css";
 import SortingButton from "./SortingButton";
-import { useState } from "react";
 
-function Filter({ sortingType, sortingDirection }) {
-  const [currentOption, setCurrentOption] = useState(null);
-  const [currentDirection, setCurrentDirection] = useState("asc");
-
-  function invertDirection() {
-    setCurrentDirection(currentDirection === "asc" ? "desc" : "asc");
-  }
-
-  function changeDirection(type) {
-    console.log(currentOption, currentDirection);
-    if (currentOption == type) {
-      invertDirection();
-    } else {
-      setCurrentOption(type);
-      setCurrentDirection("asc");
-    }
-  }
-
+function Filter({ sortOption, sortOptionDirection, onSort }) {
   return (
     <div className="filter">
       <ul className="sort-options">
         <li className="sort-option">
           <SortingButton
-            onClick={() => {
-              changeDirection("price");
-            }}
-            isActive={currentOption === "price"}
-            up={currentOption === "price" && currentDirection === "desc"}
+            onClick={() => onSort("price")}
+            isActive={sortOption === "price"}
+            up={sortOption === "price" && sortOptionDirection === "desc"}
             label="price"
           />
         </li>
         <li className="sort-option">
           <SortingButton
-            onClick={() => {
-              changeDirection("author");
-            }}
-            isActive={currentOption === "author"}
-            up={currentOption === "author" && currentDirection === "desc"}
+            onClick={() => onSort("author")}
+            isActive={sortOption === "author"}
+            up={sortOption === "author" && sortOptionDirection === "desc"}
             label="author"
           />
         </li>
         <li className="sort-option">
           <SortingButton
-            onClick={() => {
-              changeDirection("date");
-            }}
-            isActive={currentOption === "date"}
-            up={currentOption === "date" && currentDirection === "desc"}
+            onClick={() => onSort("date")}
+            isActive={sortOption === "date"}
+            up={sortOption === "date" && sortOptionDirection === "desc"}
             label="date"
           />
         </li>
