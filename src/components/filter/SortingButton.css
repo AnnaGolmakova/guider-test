@@ -6,11 +6,17 @@
   border: none;
   background: transparent;
   padding: 0 8px;
-  width: 96px;
+  min-width: 96px;
   color: var(--text-primary);
   font-size: 14px;
   line-height: 14px;
   text-transform: capitalize;
+}
+
+@media only screen and (max-width: 500px) {
+  .sort-button {
+    width: unset;
+  }
 }
 
 .sort-button::after {

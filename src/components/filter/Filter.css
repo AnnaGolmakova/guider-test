@@ -3,12 +3,21 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
-  gap: 80px;
   box-sizing: border-box;
   border-radius: 32px;
   background-color: var(--background-plate);
   padding: 10px 48px 10px 10px;
   height: 75px;
+}
+
+@media only screen and (max-width: 580px) {
+  .filter {
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+    height: unset;
+    gap: 8px;
+  }
 }
 
 .sort-options {
@@ -36,11 +45,23 @@
   padding-right: 16px;
 }
 
+@media only screen and (max-width: 580px) {
+  .sort-option {
+    height: 48px;
+  }
+}
+
 .tags {
   display: flex;
   position: relative;
   flex-direction: row;
   gap: 32px;
+}
+
+@media only screen and (max-width: 580px) {
+  .tags {
+    height: 48px;
+  }
 }
 
 .tags__button {

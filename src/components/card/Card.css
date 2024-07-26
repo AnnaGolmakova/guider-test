@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  transition: 0.3s ease-in-out;
   box-sizing: border-box;
   border-radius: 20px;
   background-color: var(--background-card);

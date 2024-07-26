@@ -11,5 +11,11 @@
   border-radius: 16px;
   background-color: var(--background-plate);
   padding: 16px;
-  max-width: 320px;
+  min-width: 280px;
+}
+
+@media only screen and (max-width: 600px) {
+  .tag-list {
+    transform: translate(20%, 100%);
+  }
 }
