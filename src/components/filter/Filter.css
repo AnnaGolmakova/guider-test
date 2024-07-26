@@ -38,22 +38,22 @@
 
 .tags {
   display: flex;
+  position: relative;
   flex-direction: row;
   gap: 32px;
-  position: relative;
 }
 
 .tags__button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   border: none;
   background: transparent;
   color: var(--text-primary);
   font-weight: 900;
   font-size: 14px;
   line-height: 14px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
 
 .tags__button::after {
@@ -75,8 +75,8 @@
 }
 
 .tags__reset {
-  background: transparent;
-  border: none;
-  color: var(--text-primary);
   cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
 }
