@@ -1,0 +1,40 @@
+.sort-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0 20px;
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: capitalize;
+}
+
+.sort-button::after {
+  content: " ";
+  margin-left: 4px;
+  width: 18px;
+  height: 18px;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-image: url(../../assets/move-down.svg);
+  mask-image: url(../../assets/move-down.svg);
+  background-color: var(--text-primary);
+  transition: transform 0.3s;
+}
+
+.sort-button_up::after {
+  transform: rotate(-180deg);
+}
+
+.sort-button:hover {
+  /* opacity: 0.3; */
+  background-color: var(--background-button-hover);
+  color: var(--backgroun-button);
+}
+
+.sort-button_active {
+  font-weight: 900;
+}

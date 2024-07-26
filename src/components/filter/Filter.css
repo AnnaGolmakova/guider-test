@@ -1,0 +1,46 @@
+.filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 80px;
+  box-sizing: border-box;
+  border-radius: 32px;
+  background-color: var(--background-plate);
+  padding: 10px 48px 10px 10px;
+  height: 75px;
+}
+
+.sort-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.sort-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: stretch;
+}
+.sort-option:first-child button {
+  border-radius: 32px 0 0 32px;
+  padding-left: 38px;
+}
+.sort-option:last-child button {
+  border-radius: 0 32px 32px 0;
+  padding-right: 38px;
+}
+
+.tags__button {
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 14px;
+}
