@@ -1,7 +1,7 @@
 import "./Card.css";
 import Button from "../button/Button";
 
-function Card({ title, author, illustrator, date, price, tags }) {
+function Card({ title, author, illustrator, date, price, tags, onTagClick }) {
   return (
     <div className="card">
       <div className="card__content">
@@ -17,7 +17,7 @@ function Card({ title, author, illustrator, date, price, tags }) {
       </div>
       <div className="button-container">
         {tags.map((tag) => (
-          <Button label={tag} key={tag} />
+          <Button label={tag} key={tag} onClick={() => onTagClick(tag)} />
         ))}
       </div>
     </div>

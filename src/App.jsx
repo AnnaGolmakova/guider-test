@@ -118,7 +118,7 @@ function App() {
         tags={tags}
         selectedTags={selectedTags}
       />
-      <List items={sortedList} />
+      <List items={sortedList} onTagClick={handleTagSelection} />
     </>
   );
 }
