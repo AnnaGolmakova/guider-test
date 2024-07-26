@@ -1,7 +1,18 @@
 import "./Filter.css";
+import { useState } from "react";
 import SortingButton from "./SortingButton";
+import TagList from "../tagList/TagList";
 
-function Filter({ sortOption, sortOptionDirection, onSort }) {
+function Filter({
+  tags,
+  selectedTags,
+  sortOption,
+  sortOptionDirection,
+  onSort,
+  onTagClick,
+  onResetFilter,
+}) {
+  const [tagListOpen, setTagListOpen] = useState(false);
   return (
     <div className="filter">
       <ul className="sort-options">
@@ -31,8 +42,23 @@ function Filter({ sortOption, sortOptionDirection, onSort }) {
         </li>
       </ul>
       <div className="tags">
-        <button className="tags__button">Tags</button>
-        <button className="sort-option__button">reset rules</button>
+        <button
+          className={`tags__button
+          ${tagListOpen ? "tags__button_up" : ""}`}
+          onClick={() => setTagListOpen(!tagListOpen)}
+        >
+          Tags
+        </button>
+        <button className="tags__reset" onClick={onResetFilter}>
+          reset rules
+        </button>
+        {tagListOpen && (
+          <TagList
+            tags={[...tags]}
+            selectedTags={selectedTags}
+            onTagClick={onTagClick}
+          />
+        )}
       </div>
     </div>
   );

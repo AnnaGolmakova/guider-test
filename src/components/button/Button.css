@@ -1,18 +1,25 @@
 .button {
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
   cursor: pointer;
   box-sizing: border-box;
-  border: none;
+  border: solid 2px transparent;
   border-radius: 50px;
-  background-color: var(--backgroun-button);
+  background-color: var(--background-button);
   padding: 10px;
   height: 35px;
   font-weight: 400;
   font-size: 12px;
   line-height: 14.52px;
+  min-width: 60px;
 }
 
 .button:hover {
   background-color: var(--background-button-hover);
+  color: var(--text-primary);
+}
+
+.button_selected {
+  background-color: var(--background-card);
+  border: solid 2px var(--background-button);
   color: var(--text-primary);
 }

@@ -14,6 +14,12 @@ function App() {
   const [booksList, setBooksList] = useState([...data]);
   const [currentSortOption, setCurrentSortOption] = useState(null);
   const [currentSortDirection, setCurrentSortDirection] = useState("asc");
+  const [tags, setTags] = useState(new Set([]));
+  const [selectedTags, setSelectedTags] = useState(new Set([]));
+
+  useEffect(() => {
+    data.map((entry) => entry.tags.map((tag) => setTags(tags.add(tag))));
+  }, [data, tags]);
 
   useEffect(() => {
     sortList({ type: currentSortOption, direction: currentSortDirection });
@@ -69,15 +75,31 @@ function App() {
     if (options.type === "date") setBooksList(sortByDate(options.direction));
   }
 
+  function handleTagSelection(tag) {
+    if (!selectedTags.has(tag)) {
+      setSelectedTags(new Set(selectedTags.add(tag)));
+    } else {
+      setSelectedTags(new Set([...selectedTags].filter((x) => x !== tag)));
+    }
+  }
+
+  function resetFilter() {
+    setSelectedTags(new Set());
+  }
+
   return (
     <>
       <Header />
       <Filter
         onSort={changeSortDirection}
+        onTagClick={handleTagSelection}
+        onResetFilter={resetFilter}
         sortOption={currentSortOption}
         sortOptionDirection={currentSortDirection}
+        tags={tags}
+        selectedTags={selectedTags}
       />
-      <List items={booksList} total={2617} />
+      <List items={booksList} />
     </>
   );
 }

@@ -1,7 +1,14 @@
 import "./Button.css";
 
-function Button({ label }) {
-  return <button className="button">{label}</button>;
+function Button({ label, selected, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`button ${selected ? "button_selected" : ""}`}
+    >
+      {label}
+    </button>
+  );
 }
 
 export default Button;

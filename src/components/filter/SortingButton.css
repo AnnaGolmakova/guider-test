@@ -1,12 +1,12 @@
 .sort-button {
-  width: 120px;
+  width: 96px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   border: none;
   background: transparent;
-  padding: 0 20px;
+  padding: 0 8px;
   color: var(--text-primary);
   font-size: 14px;
   line-height: 14px;
@@ -14,6 +14,7 @@
 }
 
 .sort-button::after {
+  flex: none;
   -webkit-mask-image: url(../../assets/move-down.svg);
   mask-image: url(../../assets/move-down.svg);
   -webkit-mask-size: 100% 100%;
@@ -33,7 +34,7 @@
 .sort-button:hover {
   /* opacity: 0.3; */
   background-color: var(--background-button-hover);
-  color: var(--backgroun-button);
+  color: var(--background-button);
 }
 
 .sort-button_active {

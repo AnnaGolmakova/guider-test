@@ -29,4 +29,19 @@ export const data = [
     price: 981,
     tags: ["Health", "Biochemistry"],
   },
+  {
+    title: "Superstorm, Design and Politics in the Age of Information",
+    author: "Noemi Biasetton",
+    date: "June 18, 2024",
+    price: 25,
+    tags: ["History", "Art", "Design"],
+  },
+  {
+    title: "Animal Books for Jaap",
+    author: "Lous Martens",
+    illustrator: "Zeno",
+    date: "January 2023",
+    price: 25,
+    tags: ["Art"],
+  },
 ];
